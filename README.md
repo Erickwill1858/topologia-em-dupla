@@ -1,1 +1,0 @@
-# topologia-em-dupla
