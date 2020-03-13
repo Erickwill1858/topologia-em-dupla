@@ -1,0 +1,34 @@
+enable
+configure terminal
+hostname RT-01
+username DUPLA privilege 15 secret DUPLA
+enable secret DUPLA
+ip domain name 1rede.local
+crypto key generate rsa general-keys modulus 1024
+service password-encryption
+
+
+line console 0
+password DUPLA
+login
+exit
+
+line vty 0 15
+password DUPLA
+transport input ssh
+login
+exit
+
+interface g0/0
+ip address 192.168.0.1 255.255.255.0
+description INTERFACE DE GERENCIAMENTO--SW-01
+no shutdown
+exit
+
+interface g0/1
+ip address 172.16.0.254 255.255.0.0
+description INTERFACE DE GERENCIAMENTO--SW-02
+no shutdown
+exit
+END
+wr
